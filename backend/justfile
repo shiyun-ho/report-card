@@ -1,0 +1,72 @@
+# Backend-specific commands
+set working-directory := justfile_directory()
+
+# Run development server
+dev:
+    uv run uvicorn src.app.main:app --reload --host 0.0.0.0 --port 8000
+
+# Run tests with coverage
+test:
+    uv run pytest --cov=src --cov-report=html
+
+# Run specific test file
+test-file file:
+    uv run pytest {{file}} -v
+
+# Format and lint code
+lint:
+    uv run ruff format .
+    uv run ruff check --fix .
+    uv run mypy src/
+
+# Type checking only
+typecheck:
+    uv run mypy src/
+
+# Database migrations
+migrate:
+    uv run alembic upgrade head
+
+# Create new migration
+migration name:
+    uv run alembic revision --autogenerate -m "{{name}}"
+
+# Downgrade database
+downgrade:
+    uv run alembic downgrade -1
+
+# Show migration history
+history:
+    uv run alembic history
+
+# Install dependencies
+install:
+    uv sync
+
+# Update dependencies
+update:
+    uv sync --upgrade
+
+# Add a new dependency
+add package:
+    uv add {{package}}
+
+# Add a dev dependency
+add-dev package:
+    uv add --dev {{package}}
+
+# Remove a dependency
+remove package:
+    uv remove {{package}}
+
+# Run the application
+run:
+    uv run python -m src.app.main
+
+# Shell into the virtual environment
+shell:
+    uv run python
+
+# Clean build artifacts
+clean:
+    rm -rf dist/ .pytest_cache/ **/__pycache__/ .coverage htmlcov/ .mypy_cache/

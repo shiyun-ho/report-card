@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ student.full_name }} - Term {{ term.term_number }} Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm 1.5cm;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 12pt;
+            line-height: 1.4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 1cm;
+            margin-bottom: 1cm;
+        }
+        
+        .school-logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 0.5cm;
+        }
+        
+        .school-name {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 0.2cm;
+        }
+        
+        .report-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1cm;
+            margin-bottom: 1cm;
+            padding: 0.5cm;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .info-group {
+            margin-bottom: 0.3cm;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #666;
+            display: inline-block;
+            min-width: 120px;
+        }
+        
+        .grades-section {
+            margin-bottom: 1cm;
+        }
+        
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #2c5aa0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.2cm;
+            margin-bottom: 0.5cm;
+        }
+        
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0.5cm;
+        }
+        
+        .grades-table th {
+            background-color: #2c5aa0;
+            color: white;
+            padding: 0.3cm;
+            text-align: left;
+            border: 1px solid #2c5aa0;
+        }
+        
+        .grades-table td {
+            border: 1px solid #ddd;
+            padding: 0.3cm;
+            text-align: center;
+        }
+        
+        .grades-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .performance-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1cm;
+            margin-top: 0.5cm;
+        }
+        
+        .performance-band {
+            display: inline-block;
+            padding: 0.1cm 0.3cm;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .band-outstanding { 
+            background-color: #d4edda; 
+            color: #155724; 
+        }
+        .band-good { 
+            background-color: #d1ecf1; 
+            color: #0c5460; 
+        }
+        .band-satisfactory { 
+            background-color: #fff3cd; 
+            color: #856404; 
+        }
+        .band-needs-improvement { 
+            background-color: #f8d7da; 
+            color: #721c24; 
+        }
+        
+        .achievements-section {
+            margin-bottom: 1cm;
+        }
+        
+        .achievement-item {
+            margin-bottom: 0.3cm;
+            padding: 0.3cm;
+            background-color: #f8f9fa;
+            border-left: 3px solid #2c5aa0;
+        }
+        
+        .achievement-title {
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 0.1cm;
+        }
+        
+        .achievement-description {
+            font-size: 11pt;
+            color: #555;
+        }
+        
+        .comments-section {
+            margin-bottom: 1cm;
+        }
+        
+        .comments-text {
+            background-color: #f8f9fa;
+            padding: 0.5cm;
+            border-radius: 5px;
+            min-height: 2cm;
+            border: 1px solid #e9ecef;
+            font-style: italic;
+        }
+        
+        .signature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2cm;
+            margin-top: 2cm;
+            padding-top: 1cm;
+            border-top: 1px solid #ddd;
+        }
+        
+        .signature-box {
+            text-align: center;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #333;
+            margin-bottom: 0.2cm;
+            height: 1cm;
+        }
+        
+        .signature-label {
+            font-size: 11pt;
+            color: #666;
+            margin-bottom: 0.1cm;
+        }
+        
+        .signature-name {
+            font-size: 11pt;
+            font-weight: bold;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 1cm;
+            right: 1.5cm;
+            font-size: 10pt;
+            color: #666;
+        }
+        
+        .no-data {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 1cm;
+        }
+        
+        .grade-letter {
+            font-weight: bold;
+        }
+        
+        .grade-a { color: #28a745; }
+        .grade-b { color: #17a2b8; }
+        .grade-c { color: #ffc107; }
+        .grade-d { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- School logo placeholder - can be added later -->
+        <!-- <img src="{{ school_logo_path }}" alt="School Logo" class="school-logo"> -->
+        <div class="school-name">{{ school_name }}</div>
+        <div class="report-title">Student Progress Report</div>
+    </div>
+    
+    <div class="student-info">
+        <div>
+            <div class="info-group">
+                <span class="info-label">Student Name:</span> 
+                <strong>{{ student.full_name }}</strong>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Student ID:</span> {{ student.student_id }}
+            </div>
+            <div class="info-group">
+                <span class="info-label">Class:</span> {{ student.class_name }}
+            </div>
+        </div>
+        <div>
+            <div class="info-group">
+                <span class="info-label">Academic Term:</span> {{ term.name }}
+            </div>
+            <div class="info-group">
+                <span class="info-label">Academic Year:</span> {{ term.academic_year }}
+            </div>
+            <div class="info-group">
+                <span class="info-label">Report Date:</span> {{ generation_date }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="grades-section">
+        <h2 class="section-title">Academic Performance</h2>
+        
+        {% if grades %}
+        <table class="grades-table">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Subject</th>
+                    <th>Score</th>
+                    <th>Grade</th>
+                    <th>Performance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade in grades %}
+                <tr>
+                    <td style="text-align: left; font-weight: bold;">{{ grade.subject_name }}</td>
+                    <td><strong>{{ grade.score }}%</strong></td>
+                    <td>
+                        {% if grade.score >= 90 %}
+                            <span class="grade-letter grade-a">A+</span>
+                        {% elif grade.score >= 85 %}
+                            <span class="grade-letter grade-a">A</span>
+                        {% elif grade.score >= 70 %}
+                            <span class="grade-letter grade-b">B</span>
+                        {% elif grade.score >= 55 %}
+                            <span class="grade-letter grade-c">C</span>
+                        {% else %}
+                            <span class="grade-letter grade-d">D</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if grade.score >= 90 %}
+                            Excellent
+                        {% elif grade.score >= 80 %}
+                            Very Good
+                        {% elif grade.score >= 70 %}
+                            Good
+                        {% elif grade.score >= 60 %}
+                            Satisfactory
+                        {% else %}
+                            Needs Improvement
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="performance-summary">
+            <div class="info-group">
+                <span class="info-label">Overall Average:</span> 
+                <strong>{{ average_score }}%</strong>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Performance Band:</span> 
+                <span class="performance-band band-{{ performance_band.lower().replace(' ', '-') }}">
+                    {{ performance_band }}
+                </span>
+            </div>
+        </div>
+        {% else %}
+        <div class="no-data">No grades available for this term.</div>
+        {% endif %}
+    </div>
+    
+    {% if selected_achievements and selected_achievements|length > 0 %}
+    <div class="achievements-section">
+        <h2 class="section-title">Notable Achievements</h2>
+        {% for achievement in selected_achievements %}
+        <div class="achievement-item">
+            <div class="achievement-title">{{ achievement.title }}</div>
+            <div class="achievement-description">{{ achievement.description }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="comments-section">
+        <h2 class="section-title">Teacher's Comments</h2>
+        <div class="comments-text">
+            {{ behavioral_comments }}
+        </div>
+    </div>
+    
+    <div class="signature-section">
+        <div class="signature-box">
+            <div class="signature-line"></div>
+            <div class="signature-label">Teacher Signature</div>
+            <div class="signature-name">{{ teacher_name }}</div>
+        </div>
+        <div class="signature-box">
+            <div class="signature-line"></div>
+            <div class="signature-label">Date</div>
+            <div class="signature-name">{{ generation_date }}</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        Generated on {{ generation_date }} | {{ school_name }} Student Report System
+    </div>
+</body>
+</html>
