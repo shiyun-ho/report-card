@@ -53,7 +53,7 @@ cd report-card
 
 # 2. Set up environment (first time only)
 cp .env.example .env.development
-# Edit .env with your credentials (or use defaults for development)
+# Edit .env.development with your credentials (or use defaults for development)
 
 # 3. Start all services (builds automatically)
 docker compose up --build
