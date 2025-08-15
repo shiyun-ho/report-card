@@ -49,10 +49,10 @@ This system fulfills the take-home assignment requirements by allowing teachers 
 ```bash
 # 1. Clone and enter directory
 git clone <repository-url>
-cd report-card-assistant
+cd report-card
 
 # 2. Set up environment (first time only)
-cp .env.example .env
+cp .env.example .env.development
 # Edit .env with your credentials (or use defaults for development)
 
 # 3. Start all services (builds automatically)
