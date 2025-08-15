@@ -1,0 +1,21 @@
+# Development overrides for docker-compose.yml
+# This file is automatically loaded by docker compose
+
+services:
+  db:
+    ports:
+      - "5432:5432"
+
+  backend:
+    environment:
+      DEBUG: "true"
+      RELOAD: "true"
+    stdin_open: true
+    tty: true
+
+  frontend:
+    environment:
+      NODE_ENV: development
+      WATCHPACK_POLLING: "true"
+    stdin_open: true
+    tty: true

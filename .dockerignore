@@ -1,0 +1,70 @@
+# Root .dockerignore - for multi-stage builds or if building from root context
+
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+!README.md
+CLAUDE.md
+
+# Development environment
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Build artifacts
+dist/
+build/
+*.tar.gz
+
+# Temporary files
+tmp/
+temp/
+
+# Dependencies (should be managed in specific service dockerignores)
+node_modules/
+.venv/
+venv/
+
+# Test files
+coverage/
+.coverage
+.pytest_cache/
+.nyc_output/
+
+# Development tools
+.mise.toml
+justfile
+check_prerequisites.sh
+
+# Docker files themselves
+Dockerfile*
+docker-compose*.yml
+.dockerignore
