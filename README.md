@@ -72,7 +72,7 @@ That's it! The system will:
 - Start frontend development server
 
 **🔧 Environment Configuration**: 
-- Copy `.env.example` to `.env` and update with your credentials
+- Copy `.env.example` to `.env.development` and update with your credentials
 - For development: You can use the default values in `.env.development`
 - For production: Generate secure keys using `openssl rand -hex 32`
 
@@ -240,7 +240,6 @@ ls -la .env*
 ### Environment Files
 - **`.env.example`**: Template with placeholders - copy this to `.env` and fill in your values
 - **`.env.development`**: Development configuration (committed, safe values for development)
-- **`.env`**: Your local configuration (not committed to git)
 
 **Setup Steps:**
 1. Copy `.env.example` to `.env.development`
