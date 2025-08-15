@@ -1,0 +1,84 @@
+# Frontend-specific commands
+set working-directory := justfile_directory()
+
+# Run development server
+dev:
+    npm run dev
+
+# Build for production
+build:
+    npm run build
+
+# Start production server
+start:
+    npm start
+
+# Run tests
+test:
+    npm test
+
+# Run tests in watch mode
+test-watch:
+    npm run test:watch
+
+# Lint code
+lint:
+    npm run lint
+
+# Fix linting issues
+lint-fix:
+    npm run lint:fix
+
+# Format code
+format:
+    npm run format
+
+# Type checking
+typecheck:
+    npm run type-check
+
+# Install dependencies
+install:
+    npm install
+
+# Clean install
+clean-install:
+    rm -rf node_modules package-lock.json
+    npm install
+
+# Update dependencies
+update:
+    npm update
+
+# Add a dependency
+add package:
+    npm install {{package}}
+
+# Add a dev dependency
+add-dev package:
+    npm install --save-dev {{package}}
+
+# Remove a dependency
+remove package:
+    npm uninstall {{package}}
+
+# Analyze bundle size
+analyze:
+    npm run build
+    npx next-bundle-analyzer
+
+# Clean build artifacts
+clean:
+    rm -rf .next/ out/ node_modules/.cache/
+
+# Add shadcn component
+add-component component:
+    npx shadcn@latest add {{component}}
+
+# Run Storybook (if added later)
+storybook:
+    npm run storybook
+
+# Build Storybook (if added later)
+build-storybook:
+    npm run build-storybook
