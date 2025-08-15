@@ -92,7 +92,7 @@ Use these credentials to test different roles across all schools. Default passwo
 ```bash
 **Note:** The above credentials are for locally seeded database only. 
 They are provided solely for assessment/testing locally.
-And are not accessibly in other environments.
+And are not accessible in other environments.
 ```
 
 ## 🔒 Code Security
