@@ -1,0 +1,9 @@
+# Mise configuration for environment management
+[tools]
+python = "3.12"
+node = "20"
+uv = "latest"
+
+# Note: Environment variables should be loaded from .env files
+# Do not put credentials directly in this file
+# Use .env.development for development or .env for production
