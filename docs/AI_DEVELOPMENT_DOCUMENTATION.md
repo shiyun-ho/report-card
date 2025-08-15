@@ -10,6 +10,7 @@
 ## AI-Assisted Development Workflow Overview
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph TD
     A[📋 Assignment Brief Analysis] --> B[🤖 Multi-AI Consultation]
     B --> C[🎯 Strategic Planning]
@@ -67,11 +68,11 @@ graph TD
     G --> G2[📋 AI Documentation<br/>Comprehensive workflow analysis]
     G --> G3[🎯 Submission Ready<br/>6 hours total development time]
 
-    %% Styling
-    classDef aiTool fill:#e1f5fe
-    classDef process fill:#f3e5f5
-    classDef output fill:#e8f5e8
-    classDef decision fill:#fff3e0
+    %% Dark mode styling with high contrast
+    classDef aiTool fill:#64b5f6,stroke:#ffffff,stroke-width:3px,color:#000000,font-weight:bold,font-size:14px
+    classDef process fill:#4a148c,stroke:#ffffff,stroke-width:3px,color:#ffffff,font-weight:bold,font-size:14px
+    classDef output fill:#66bb6a,stroke:#ffffff,stroke-width:3px,color:#000000,font-weight:bold,font-size:14px
+    classDef decision fill:#ff9800,stroke:#ffffff,stroke-width:3px,color:#000000,font-weight:bold,font-size:14px
 
     class B1,B2,B3,E4,E5 aiTool
     class A1,C1,C2,C3,E1,E2,E3,F1,F2,F3,F4 process
@@ -84,6 +85,7 @@ graph TD
 ### 🔄 Complete Development Workflow
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 sequenceDiagram
     participant Dev as Developer
     participant CC as Claude Code
@@ -137,6 +139,7 @@ sequenceDiagram
 ### 🧠 AI Agent Ecosystem
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph TB
     subgraph AI["AI Tool Ecosystem"]
         A["Claude 3.5 Sonnet<br/>Architecture & Security"]
@@ -167,9 +170,9 @@ graph TB
     D --> I
     E --> I
 
-    classDef aiExternal fill:#e1f5fe
-    classDef aiAgent fill:#f3e5f5
-    classDef knowledge fill:#e8f5e8
+    classDef aiExternal fill:#64b5f6,stroke:#ffffff,stroke-width:3px,color:#000000,font-weight:bold,font-size:14px
+    classDef aiAgent fill:#4a148c,stroke:#ffffff,stroke-width:3px,color:#ffffff,font-weight:bold,font-size:14px
+    classDef knowledge fill:#66bb6a,stroke:#ffffff,stroke-width:3px,color:#000000,font-weight:bold,font-size:14px
 
     class A,B,C aiExternal
     class D,E,F aiAgent
