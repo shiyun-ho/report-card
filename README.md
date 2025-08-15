@@ -77,21 +77,22 @@ That's it! The system will:
 - For production: Generate secure keys using `openssl rand -hex 32`
 
 ### Test Credentials
-Use these credentials to test different roles across all schools:
+Use these credentials to test different roles across all schools. Default password for these acccounts are set by the `{SEED_DEFAULT_PASSWORD}` variable in `.env.development`:
 
 #### **Form Teachers** (Can see assigned class students only)
-- **Riverside Primary**: `tan@rps.edu.sg` / `dev_password_123`
-- **Hillview Primary**: `wong@hps.edu.sg` / `dev_password_123`  
-- **Eastwood Primary**: `chen@eps.edu.sg` / `dev_password_123`
+- **Riverside Primary**: `tan@rps.edu.sg` / `{SEED_DEFAULT_PASSWORD}`
+- **Hillview Primary**: `wong@hps.edu.sg` / `{SEED_DEFAULT_PASSWORD}` 
+- **Eastwood Primary**: `chen@eps.edu.sg` / `{SEED_DEFAULT_PASSWORD}`
 
 #### **Year Heads** (Can see all students in their school)
-- **Riverside Primary**: `lim@rps.edu.sg` / `dev_password_123`
-- **Hillview Primary**: `kumar@hps.edu.sg` / `dev_password_123`
-- **Eastwood Primary**: `lee@eps.edu.sg` / `dev_password_123`
+- **Riverside Primary**: `lim@rps.edu.sg` / `{SEED_DEFAULT_PASSWORD}`
+- **Hillview Primary**: `kumar@hps.edu.sg` / `{SEED_DEFAULT_PASSWORD}`
+- **Eastwood Primary**: `lee@eps.edu.sg` / `{SEED_DEFAULT_PASSWORD}`
 
 ```bash
 **Note:** The above credentials are for locally seeded database only. 
-They are provided solely for assessment/testing locally and are not accessibly in other environments.
+They are provided solely for assessment/testing locally.
+And are not accessibly in other environments.
 ```
 
 ## 🔒 Code Security
