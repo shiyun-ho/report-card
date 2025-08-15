@@ -89,6 +89,11 @@ Use these credentials to test different roles across all schools:
 - **Hillview Primary**: `kumar@hps.edu.sg` / `dev_password_123`
 - **Eastwood Primary**: `lee@eps.edu.sg` / `dev_password_123`
 
+```bash
+**Note:** The above credentials are for locally seeded database only. 
+They are provided solely for assessment/testing locally and are not accessibly in other environments.
+```
+
 ## 🔒 Code Security
 
 ### Role-Based Access Control (RBAC)
@@ -238,7 +243,7 @@ ls -la .env*
 - **`.env`**: Your local configuration (not committed to git)
 
 **Setup Steps:**
-1. Copy `.env.example` to `.env`
+1. Copy `.env.example` to `.env.development`
 2. Replace placeholder values with your actual credentials
 3. For development, you can reference values from `.env.development`
 
