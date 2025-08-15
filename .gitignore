@@ -1,0 +1,96 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+# Python build directories
+backend/lib/
+backend/lib64/
+**/build/lib/
+**/dist/lib/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+# Environment files - NEVER commit these!
+.env
+.env.*
+!.env.example
+# Note: .env.development removed from tracking for security best practices
+venv/
+ENV/
+env/
+.venv
+
+# Node
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+settings.local.json
+
+# Docker
+postgres_data/
+
+# Logs
+logs/
+*.log
+session*.log
+
+# Security - Never commit these!
+cookies.txt
+cookies_*.txt
+*.cookies
+
+# Test artifacts
+backend/.env.test
+**/htmlcov/
+**/.coverage
+
+# Confidential documentation with credentials
+.claude/docs/reference/testing-credentials.md
+.claude/docs/reference/backend-api-reference.md
+
+# Git backups
+.git.backup/
+
+# OS
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
